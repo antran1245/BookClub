@@ -46,4 +46,10 @@ public class UserService {
 		result.rejectValue("password", "Credential", "Invalid Email/Password!");
 		return null;
 	}
+	
+//	============================ Find by ID ============================
+	
+	public User findUser(Long id) {
+		return userRepo.findById(id).orElse(null);
+	}
 }

@@ -1,0 +1,13 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.heading-text {
+	color: purple;
+	font-weight: bold;
+}
+
+.form-box {
+	border: 1px solid black;
+}
