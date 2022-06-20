@@ -24,7 +24,7 @@
 		<header class="row">
 			<div class="col-8 d-flex flex-column justify-content-around">
 				<div class="row">
-					<h1 class="heading-text">Welcome, User:<c:out value="${user.getName()}"/>!</h1>
+					<h1 class="heading-text">Welcome, <c:out value="${user.getName()}"/>!</h1>
 				</div>
 				<div class="row">
 					<p>Books from every	everyone's shelves:		
@@ -53,7 +53,7 @@
 					<c:forEach var="book" items="${books}">
 						<tr>
 							<th scope="row"><c:out value="${book.getId()}"/></th>
-							<td><c:out value="${book.getTitle()}"/></td>
+							<td><a href="/books/${book.getId()}"><c:out value="${book.getTitle()}"/></a></td>
 							<td><c:out value="${book.getAuthor()}"/></td>
 							<td><c:out value="${book.getUser().getName()}"/></td>
 						</tr>

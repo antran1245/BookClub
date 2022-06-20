@@ -19,7 +19,7 @@ public class BookService {
 	public List<Book> allBooks() {
 		return bookRepo.findAll();
 	}
-	public Book oneBook(Long id) {
+	public Book getBook(Long id) {
 		Optional<Book> optionalBook = bookRepo.findById(id);
 		if(optionalBook.isPresent()) {
 			return optionalBook.get();
