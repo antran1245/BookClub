@@ -30,9 +30,9 @@
 				<h2>Register</h2>
 				<form:form method="post" action="/register" modelAttribute="newUser">
 					<div class="mb-3">
-						<form:label path="userName" class="form-label">User Name: </form:label>
-						<form:input path="userName" class="form-control"/>
-						<form:errors path="userName" class="text-danger"/>
+						<form:label path="name" class="form-label">Name: </form:label>
+						<form:input path="name" class="form-control"/>
+						<form:errors path="name" class="text-danger"/>
 					</div>
 					<div class="mb-3">
 						<form:label path="email" class="form-label">Email: </form:label>

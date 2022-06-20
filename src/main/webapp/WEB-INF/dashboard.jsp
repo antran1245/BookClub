@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Login and Registration</title>
+    <title>Dashboard</title>
     <!-- for Bootstrap CSS -->
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css"> <!-- change to match your file/naming structure -->
@@ -22,13 +22,44 @@
 <body>
 	<div class="container">
 		<header class="row">
-			<h1 class="heading-text">Welcome, User:<c:out value="${user.getUserName()}"/>!</h1>
+			<div class="col-8 d-flex flex-column justify-content-around">
+				<div class="row">
+					<h1 class="heading-text">Welcome, User:<c:out value="${user.getName()}"/>!</h1>
+				</div>
+				<div class="row">
+					<p>Books from every	everyone's shelves:		
+				</div>			
+			</div>
+			<div class="col d-flex flex-column justify-content-around">
+				<div class="row text-end">
+					<a href="/logout">logout</a>
+				</div>
+				<div class="row text-end">
+					<a href="/books/new">+ Add a Book to My Shelf</a>
+				</div>				
+			</div>
 		</header>
 		<div class="row">
-			<p>This is your dashboard. Nothing to see here yet.</p>
-		</div>
-		<div class="row">
-			<a href="/logout">logout</a>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Title</th>
+						<th scope="col">Author Name</th>
+						<th scope="col">Posted By</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="book" items="${books}">
+						<tr>
+							<th scope="row"><c:out value="${book.getId()}"/></th>
+							<td><c:out value="${book.getTitle()}"/></td>
+							<td><c:out value="${book.getAuthor()}"/></td>
+							<td><c:out value="${book.getUser().getName()}"/></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </body>
