@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.antran.bookclub.models.Book;
@@ -49,9 +50,15 @@ public class BookController {
 		}
 		return "/book/detailBook.jsp";
 	}
+	@GetMapping("/{id}/edit")
+	public String editBook(@PathVariable("id") Long id, Model model) {
+		Book book = bookService.getBook(id);
+		model.addAttribute("editBook", book);
+		return "/book/editBook.jsp";
+	}
 //	======================= Action ===========================
 	@PostMapping("/create")
-	public String createBook(@Valid @ModelAttribute("newBook") Book book, BindingResult result, Model model, HttpSession session) {
+	public String createBook(@Valid @ModelAttribute("newBook") Book book, BindingResult result, HttpSession session) {
 		if(result.hasErrors()) {
 			return "/book/addBook.jsp";
 		}
@@ -62,7 +69,15 @@ public class BookController {
 	}
 	@DeleteMapping("/{id}")
 	public String delete(@PathVariable("id") Long id) {
+		System.out.println("here");
 		bookService.deleteBook(id);
+		return "redirect:/bookmarket";
+	}
+	@PutMapping("/{id}")
+	public String edit(@Valid @ModelAttribute("editBook") Book book, BindingResult result, HttpSession session) {
+		User user = userService.findUser((Long) session.getAttribute("uuid"));
+		book.setUser(user);
+		bookService.createBook(book);
 		return "redirect:/bookmarket";
 	}
 }

@@ -60,7 +60,7 @@
 										</c:when>
 										<c:otherwise>
 											<div class="row d-flex">
-												<a class="col-3" href="">edit</a>
+												<a class="col-3" href="/books/${book.getId()}/edit">edit</a>
 												<form class="col" action="/books/${book.getId()}" method="post">
 													<input type="hidden" name="_method" value="delete"/>
 													<input class="a-btn" type="submit" value="delete"/>
@@ -97,7 +97,7 @@
 								<td>
 									<form:form action="/borrow/${book.getId()}" method="post">
 										<input type="hidden" name="_method" value="put"/>
-										<input type="submit" value="unborrow" class="a-btn"/>
+										<input type="submit" value="return" class="a-btn"/>
 									</form:form>
 								</td>
 							</tr>
