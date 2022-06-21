@@ -41,6 +41,10 @@ public class Book {
 	@JoinColumn(name="user_id")
 	private User user;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="borrower_id")
+	private User borrower;
+	
 //	=================== Created/Updated ===================
 	
 	@Column(updatable=false)
@@ -120,5 +124,13 @@ public class Book {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public User getBorrower() {
+		return borrower;
+	}
+
+	public void setBorrower(User borrower) {
+		this.borrower = borrower;
 	}
 }

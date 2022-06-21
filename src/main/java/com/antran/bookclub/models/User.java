@@ -50,6 +50,9 @@ public class User {
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Book> books;
 	
+	@OneToMany(mappedBy="borrower", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Book> borrowBooks;
+	
 //	====================== CreatedAt/UpdatedAt ===================
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -136,5 +139,13 @@ public class User {
 
 	public void setBooks(List<Book> books) {
 		this.books = books;
+	}
+
+	public List<Book> getBorrowBooks() {
+		return borrowBooks;
+	}
+
+	public void setBorrowBooks(List<Book> borrowBooks) {
+		this.borrowBooks = borrowBooks;
 	}
 }

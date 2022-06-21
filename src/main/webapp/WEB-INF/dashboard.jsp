@@ -36,7 +36,10 @@
 				</div>
 				<div class="row text-end">
 					<a href="/books/new">+ Add a Book to My Shelf</a>
-				</div>				
+				</div>
+				<div class="row text-end">
+					<a href="/bookmarket">Bookmarket</a>
+				</div>		
 			</div>
 		</header>
 		<div class="row">
